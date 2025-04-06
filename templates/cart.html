@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">🛒 Your Cart</h2>
+
+    {% if cart.books %}
+        <ul class="list-group">
+            {% for book in cart.books %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>{{ book.title }}</strong> by {{ book.author }} - Rs{{ book.price }}
+                    </div>
+                    <a href="{{ url_for('remove_from_cart', book_id=book._id) }}" class="btn btn-danger btn-sm">Remove</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-muted">Your cart is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}

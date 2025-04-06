@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ book and 'Edit Book' or 'Add New Book' }}</h2>
+<form method="POST">
+    <input class="form-control my-2" name="title" placeholder="Title" value="{{ book.title if book else '' }}" required>
+    <input class="form-control my-2" name="author" placeholder="Author" value="{{ book.author if book else '' }}" required>
+    <input class="form-control my-2" name="genre" placeholder="Genre" value="{{ book.genre if book else '' }}" required>
+    <textarea class="form-control my-2" name="description" placeholder="Description">{{ book.description if book else '' }}</textarea>
+    <input class="form-control my-2" name="price" placeholder="Price" type="number" step="0.01" value="{{ book.price if book else '' }}" required>
+    <button class="btn btn-success">Save</button>
+</form>
+{% endblock %}
